@@ -6,11 +6,19 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-let users = [];
+let users = [{
+	username: 'bobesponja', 
+	avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info" 
+}];
+let tweets = [{
+	username: "bobesponja",
+	avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info",
+  tweet: "eu amo o hub",
+}];
 
 app.post("/sign-up", (req, res) => {
   const body = req.body;
-  let user = {
+  const user = {
       username: body.username,
       avatar: body.avatar,
   };
@@ -38,9 +46,12 @@ app.post("/tweets", (req, res) => {
     if (usercheck !== undefined) {
       const tweetObj = {
         username,
-        tweet,
         avatar : usercheck.avatar,
+        tweet
       };
+      
+      tweets = [...tweets, tweetObj];
+
       res.status(201).send(tweetObj);
     }
     else{
@@ -49,6 +60,16 @@ app.post("/tweets", (req, res) => {
   }
 });
 
+app.get("/tweets", (req, res) => {
+  const tenLastTweets = []
+  for(let i = 0; i < 10; i++) {
+    tenLastTweets.push(tweets[i]);
+  }
+  res.status(200).send(tenLastTweets);
+});
+
+
 app.listen(5000, () => {
   console.log(chalk.bold.green("Server is running on port 5000"));
 });
+
