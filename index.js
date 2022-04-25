@@ -33,7 +33,8 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-  const { tweet, username } = req.body;
+  const { tweet } = req.body;
+  const username = req.header("user");
   console.log(username)
   if (tweet === "" || username === "") {
     res.status(409).send("Tweet and user are required");
