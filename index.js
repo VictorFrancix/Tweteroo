@@ -35,8 +35,7 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-  const { tweet } = req.body;
-  const username = req.header("user");
+  const { tweet, username } = req.body;
   console.log(username)
   if (tweet === "" || username === "") {
     res.status(409).send("Tweet and user are required");
@@ -62,7 +61,7 @@ app.post("/tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
   const tenLastTweets = []
-  for(let i = 0; i < 10; i++) {
+  for(let i = 0; i < tweets.length; i++) {
     tenLastTweets.push(tweets[i]);
   }
   res.status(200).send(tenLastTweets);
