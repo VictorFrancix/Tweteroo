@@ -7,8 +7,6 @@ app.use(cors());
 app.use(json());
 
 let users = [{
-	username: 'bobesponja', 
-	avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info" 
 }];
 let tweets = [{
 	username: "bobesponja",
@@ -67,6 +65,16 @@ app.get("/tweets", (req, res) => {
   res.status(200).send(tenLastTweets);
 });
 
+app.get("/tweets/:username",(req,res)=>{
+  const {username}=req.params.username
+let usertt=tweets.filter(tweet=> tweet.username===username)
+  if(usertt.length>0){
+  res.status(200).send(usertt)
+}
+else{
+  res.status(400).send("User does not exist")
+}
+})
 
 app.listen(5000, () => {
   console.log(chalk.bold.green("Server is running on port 5000"));
