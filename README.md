@@ -30,7 +30,7 @@ Seu primeiro projeto back-end será a construção da API do Tweteroo, um clone 
     - Repare que a informação “avatar” **não vem** da requisição post do `/tweets`. Você vai precisar obtê-la de outra forma.
 
 - **POST** `/sign-up`
-    - Deve receber (pelo *body* da *request*), um parâmetro **username** e um **avatar**, contendo o nome do username do usuário e a sua foto de avatar:
+    - [x] Deve receber (pelo *body* da *request*), um parâmetro **username** e um **avatar**, contendo o nome do username do usuário e a sua foto de avatar:
         
         ```jsx
         {
@@ -39,10 +39,10 @@ Seu primeiro projeto back-end será a construção da API do Tweteroo, um clone 
         }
         ```
         
-    - Salvar esse usuário num array de usuários do servidor
-    - Por fim, retornar a mensagem `“OK”`
+    - [x] Salvar esse usuário num array de usuários do servidor
+    - [x] Por fim, retornar a mensagem `“OK”`
 - **POST** `/tweets`
-    - Deve receber (pelo *body* da *request*), os parâmetros `username` e `tweet`:
+    - [x] Deve receber (pelo *body* da *request*), os parâmetros `username` e `tweet`:
         
         ```jsx
         {
@@ -51,10 +51,10 @@ Seu primeiro projeto back-end será a construção da API do Tweteroo, um clone 
         }
         ```
         
-    - Salvar esse *tweet* num array de *tweets* do servidor.
-    - Por fim, retornar a mensagem `“OK”` .
+    - [x] Salvar esse *tweet* num array de *tweets* do servidor.
+    - [x] Por fim, retornar a mensagem `“OK”` .
 - **GET** `/tweets`
-    - Retornar os **10 últimos tweets** publicados
+    - [x] Retornar os **10 últimos tweets** publicados
         
         ```jsx
         [
@@ -68,14 +68,14 @@ Seu primeiro projeto back-end será a construção da API do Tweteroo, um clone 
 # Bônus
 
 - **Validação de dados**
-    - [ ]  Todas as rotas deverão validar os dados recebidos, caso algum dado venha vazio ou no formato inválido, o servidor deverá retornar o status code 400 (BAD REQUEST) e não continuará com a execução da função. **Dica:** procure pelo método `res.sendStatus()`.
-    - [ ]  **POST** `/sign-up` precisa validar se os valores de `username` e `avatar` foram enviados e caso contrário, deverá responder com a mensagem “Todos os campos são obrigatórios!”.
-    - [ ]  **POST** `/tweets` precisa validar se os valores de `username` e `tweet` foram enviados e caso contrário, deverá responder com a mensagem “Todos os campos são obrigatórios!”.
+    - [x]  Todas as rotas deverão validar os dados recebidos, caso algum dado venha vazio ou no formato inválido, o servidor deverá retornar o status code 400 (BAD REQUEST) e não continuará com a execução da função. **Dica:** procure pelo método `res.sendStatus()`.
+    - [x]  **POST** `/sign-up` precisa validar se os valores de `username` e `avatar` foram enviados e caso contrário, deverá responder com a mensagem “Todos os campos são obrigatórios!”.
+    - [x]  **POST** `/tweets` precisa validar se os valores de `username` e `tweet` foram enviados e caso contrário, deverá responder com a mensagem “Todos os campos são obrigatórios!”.
 
 - **Status codes de requisições POST**:
 
-    - [ ]  Todas as requisições POST deverão retornar o status code 201 (CREATED) além do seu retorno já descrito (mensagens, JSONs, etc). **Dica:** procure pelo método `res.status()` e tente utilizá-lo junto do método `res.send()`
+    - [x]  Todas as requisições POST deverão retornar o status code 201 (CREATED) além do seu retorno já descrito (mensagens, JSONs, etc). **Dica:** procure pelo método `res.status()` e tente utilizá-lo junto do método `res.send()`
 
 - **GET** `/tweets/USERNAME`
-    - [ ]  Retornar todos os *tweets* publicados do usuário recebido por parâmetro de rota
+    - [x]  Retornar todos os *tweets* publicados do usuário recebido por parâmetro de rota
 - **POST** `/tweets` recebendo username por Header
