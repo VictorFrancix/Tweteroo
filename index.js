@@ -26,6 +26,29 @@ app.post("/sign-up", (req, res) => {
   }
 });
 
+app.post("/tweets", (req, res) => {
+  const { tweet } = req.body;
+  const username = req.header("user");
+  console.log(username)
+  if (tweet === "" || username === "") {
+    res.status(409).send("Tweet and user are required");
+  }
+  else {
+    const usercheck = users.find((user) => user.username === username);
+    if (usercheck !== undefined) {
+      const tweetObj = {
+        username,
+        tweet,
+        avatar : usercheck.avatar,
+      };
+      res.status(201).send(tweetObj);
+    }
+    else{
+      res.status(400).send("User does not exist");
+    }
+  }
+});
+
 app.listen(5000, () => {
   console.log(chalk.bold.green("Server is running on port 5000"));
 });
